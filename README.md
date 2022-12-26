@@ -1,0 +1,1 @@
+docker-compose -p "institute-management" --file ./docker-compose-local.yaml up -d

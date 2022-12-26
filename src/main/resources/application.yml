@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: institute-management
+  datasource:
+    hikari:
+      minimumIdle: 2
+      maximumPoolSize: 10
+      idleTimeout: 120000
+      connectionTimeout: 300000
+      leakDetectionThreshold: 300000
+    url: jdbc:mysql://${RDS_HOSTNAME:localhost}:${RDS_PORT:3306}/${RDS_DB_NAME:institutemanagement}?serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: ${RDS_USERNAME:root}
+    password: ${RDS_PASSWORD:ahlas1706}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.MySQLDialect
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+server:
+  port: 8080
+    
+keycloak-admin-user: admin
+keycloak-admin-password: admin
+
+keycloak:
+  resource: institute-management-service
+  credentials: 
+    secret: ${CLIENT_SECRET:frnncIYfr5GjotXIKjOjaQebB7potTCL}
+#  auth-server-url: ${KEYCLOAK_URI:https://auth.dev.komsumdannehaber.com}/aut
+  auth-server-url: ${KEYCLOAK_URI:http://localhost:8090}/auth
+#  auth-server-url: ${KEYCLOAK_URI:http://192.168.1.103:8080}/auth
+  realm: training
+  bearer-only: true
+  public-client: true
+  principal-attribute: preferred_username
+  ssl-required: none
+  
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+    restart:
+      enabled: true
+  
+springdoc:
+  swagger-ui:
+    oauth:
+      clientId: institute-management-service
+      clientSecret: ${CLIENT_SECRET:frnncIYfr5GjotXIKjOjaQebB7potTCL}
+      usePkceWithAuthorizationCodeGrant: true
+  oAuthFlow:
+    authorizationUrl: ${KEYCLOAK_URI:http://localhost:8090}/auth/realms/institute-management/protocol/openid-connect/auth
+    tokenUrl: ${KEYCLOAK_URI:http://localhost:8090}/auth/realms/institute-management/protocol/openid-connect/token
+#    authorizationUrl: ${KEYCLOAK_URI:http://192.168.1.103:8080}/auth/realms/training/protocol/openid-connect/auth
+#    tokenUrl: ${KEYCLOAK_URI:http://192.168.1.103:8080}/auth/realms/training/protocol/openid-connect/token
+#    authorizationUrl: ${KEYCLOAK_URI:http://172.20.10.4:8080}/auth/realms/komsumdannehaber/protocol/openid-connect/auth
+#    tokenUrl: ${KEYCLOAK_URI:http://172.20.10.4:8080}/auth/realms/komsumdannehaber/protocol/openid-connect/token
