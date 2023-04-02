@@ -8,7 +8,7 @@
 		<version>2.7.7-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sessevmez</groupId>
+	<groupId>com.srb</groupId>
 	<artifactId>institutemanagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>institutemanagement</name>
@@ -18,7 +18,7 @@
 		<repackage.classifier/>
 		<spring-native.version>0.12.1</spring-native.version>
 		<keycloak.version>20.0.1</keycloak.version>
-		<springdoc-openapi-ui.version>1.6.13</springdoc-openapi-ui.version>
+		<springdoc-openapi-ui.version>1.6.15</springdoc-openapi-ui.version>
 		<modelmapper.version>3.0.0</modelmapper.version>
 	</properties>
 	

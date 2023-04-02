@@ -1,3 +1,7 @@
+logging:
+  level:
+    root: DEBUG
+
 spring:
   application:
     name: institute-management
@@ -17,7 +21,7 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 #    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
 server:
@@ -29,11 +33,11 @@ keycloak-admin-password: admin
 keycloak:
   resource: institute-management-service
   credentials: 
-    secret: ${CLIENT_SECRET:frnncIYfr5GjotXIKjOjaQebB7potTCL}
+    secret: ${CLIENT_SECRET:s10qj0kV220wIsnJmMp9zcjIEngLRFu0}
 #  auth-server-url: ${KEYCLOAK_URI:https://auth.dev.komsumdannehaber.com}/aut
-  auth-server-url: ${KEYCLOAK_URI:http://localhost:8090}/auth
+  auth-server-url: ${KEYCLOAK_URI:http://localhost:8090}
 #  auth-server-url: ${KEYCLOAK_URI:http://192.168.1.103:8080}/auth
-  realm: training
+  realm: institute-management
   bearer-only: true
   public-client: true
   principal-attribute: preferred_username
@@ -52,11 +56,11 @@ springdoc:
   swagger-ui:
     oauth:
       clientId: institute-management-service
-      clientSecret: ${CLIENT_SECRET:frnncIYfr5GjotXIKjOjaQebB7potTCL}
+      clientSecret: ${CLIENT_SECRET:s10qj0kV220wIsnJmMp9zcjIEngLRFu0}
       usePkceWithAuthorizationCodeGrant: true
   oAuthFlow:
-    authorizationUrl: ${KEYCLOAK_URI:http://localhost:8090}/auth/realms/institute-management/protocol/openid-connect/auth
-    tokenUrl: ${KEYCLOAK_URI:http://localhost:8090}/auth/realms/institute-management/protocol/openid-connect/token
+    authorizationUrl: ${KEYCLOAK_URI:http://localhost:8090}/realms/institute-management/protocol/openid-connect/auth
+    tokenUrl: ${KEYCLOAK_URI:http://localhost:8090}/realms/institute-management/protocol/openid-connect/token
 #    authorizationUrl: ${KEYCLOAK_URI:http://192.168.1.103:8080}/auth/realms/training/protocol/openid-connect/auth
 #    tokenUrl: ${KEYCLOAK_URI:http://192.168.1.103:8080}/auth/realms/training/protocol/openid-connect/token
 #    authorizationUrl: ${KEYCLOAK_URI:http://172.20.10.4:8080}/auth/realms/komsumdannehaber/protocol/openid-connect/auth
