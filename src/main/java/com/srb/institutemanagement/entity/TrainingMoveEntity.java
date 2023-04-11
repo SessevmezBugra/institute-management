@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
@@ -32,6 +34,7 @@ public class TrainingMoveEntity extends Auditable<String> implements Serializabl
 	@Id
     @Column(name="ID")
     @GeneratedValue
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 	
 	@JsonBackReference

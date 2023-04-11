@@ -42,8 +42,8 @@ public class TrainingServiceImpl implements TrainingService {
 	@Override
 	public void createTraining(TrainingDto dto) {
 		TrainingEntity trainingEntity = modelMapper.map(dto, TrainingEntity.class);
-		UserRepresentation userRepresentation = keycloakUserService.findByUserId(trainingEntity.getUserId());
-		trainingEntity.setUserId(userRepresentation.getId());
+//		UserRepresentation userRepresentation = keycloakUserService.findByUserId(trainingEntity.getUserId());
+//		trainingEntity.setUserId(userRepresentation.getId());
 		trainingRepository.save(trainingEntity);
 	}
 
@@ -97,10 +97,12 @@ public class TrainingServiceImpl implements TrainingService {
 		TrainingSectionEntity entity = modelMapper.map(dto, TrainingSectionEntity.class);
 		TrainingEntity foundTrainingEntity = findTrainingEntityById(trainingId);
 		entity.setTraining(foundTrainingEntity);
-		if(!ObjectUtils.isEmpty(dto.getParent().getId())) {
-			TrainingSectionEntity foundParentSection = findTrainingSectionEntityById(dto.getParent().getId());
-			entity.setParent(foundParentSection);
-		}
+		
+//		if(!ObjectUtils.isEmpty(dto.getParent().getId())) {
+//			TrainingSectionEntity foundParentSection = findTrainingSectionEntityById(dto.getParent().getId());
+//			entity.setParent(foundParentSection);
+//		}
+		
 		trainingSectionRepository.save(entity);
 	}
 	

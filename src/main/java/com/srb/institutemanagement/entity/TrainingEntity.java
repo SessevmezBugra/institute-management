@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
@@ -33,7 +35,8 @@ public class TrainingEntity extends Auditable<String> implements Serializable {
 
 	@Id
     @Column(name="ID")
-    @GeneratedValue
+	@GeneratedValue
+	@Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 
 	@Column(name = "NAME")

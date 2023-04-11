@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -37,6 +39,7 @@ public class TrainingSectionEntity extends Auditable<String> implements Serializ
 	@Id
     @Column(name="ID")
     @GeneratedValue
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 
 	@JsonBackReference

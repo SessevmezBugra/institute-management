@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 import com.srb.institutemanagement.enums.UserRole;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +38,7 @@ public class InstituteUserRoleMappingEntity extends Auditable<String> implements
 	@Id
     @Column(name="ID")
     @GeneratedValue
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 	
 	@Column(name="USER_ID")
