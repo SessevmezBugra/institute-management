@@ -33,3 +33,14 @@ services:
       MYSQL_PASSWORD: ahlas1706
     ports:
       - 3308:3306
+  
+  institutemanagement-database:
+    container_name: institutemanagement-database
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: institutemanagement
+      MYSQL_USER: institutemanagement
+      MYSQL_PASSWORD: ahlas1706
+    ports:
+      - 3309:3306
